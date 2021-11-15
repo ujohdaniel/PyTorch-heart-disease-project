@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request, redirect
+import os
 import model
 
 app = Flask(__name__)
@@ -38,4 +39,5 @@ def predict():
 
 
 if __name__ == '__main__':
-    app.run(host="0.0.0.0")
+    from os import environ
+    app.run(debug=False, port=environ.get("PORT", 5000))
